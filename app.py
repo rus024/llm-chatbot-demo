@@ -3,7 +3,7 @@ import openai
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-st.title("🧠 LLM Chatbot Demo")
+st.title("🤖 Ruslan's Chatbot")
 
 if 'messages' not in st.session_state:
     st.session_state['messages'] = [
