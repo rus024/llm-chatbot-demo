@@ -1,7 +1,7 @@
 import streamlit as st
 import openai
 
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.title("🤖 Ruslan's Chatbot")
 
@@ -15,7 +15,7 @@ user_input = st.text_input("You:", "")
 if user_input:
     st.session_state['messages'].append({"role": "user", "content": user_input})
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
         messages=st.session_state['messages'],
         max_tokens=300
@@ -25,6 +25,5 @@ if user_input:
     st.session_state['messages'].append({"role": "assistant", "content": reply})
     st.text_area("Assistant:", value=reply, height=200, max_chars=None)
 
-if st.button("Show Conversation History"):
-    for msg in st.session_state['messages']:
-        st.write(f"**{msg['role'].capitalize()}**: {msg['content']}")
+if st.button
+
